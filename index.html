@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Countries Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>World Countries Data</h1>
+        <h4>currently, we have <span id="numOfCountries"></span> Countries</h4>
+        <h5><span id="numOfCriteria"></span> countries satisfied the search criteria</h5>
+    </header>
+
+    <div class="countries-filters">
+        <input type="text" id="search" placeholder="Search countries by city or languages">
+        <div class="buttons">
+            <button id="btnName">Name</button>
+            <button id="btnCapital">capital</button>
+            <button id="btnPopulation">population</button>
+            <span class="material-symbols-outlined" id="btnStats">
+                query_stats
+            </span>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="countries-wrapper">
+            <!-- <div class="box">
+                <img src="" alt="flag" id="flag">
+                <h3 id="country-name">botswana</h3>
+                <div class="info">
+                    <p id="capital">capital: <span></span></p>
+                    <p id="languages">languages: <span></span></p>
+                    <p id="population">population: <span></span></p>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
