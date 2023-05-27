@@ -11,16 +11,18 @@
 <body>
     <header>
         <h1>World Countries Data</h1>
-        <h4>currently, we have <span id="numOfCountries"></span> Countries</h4>
+        <h4>currently, we have 250 Countries</h4>
         <h5><span id="numOfCriteria"></span> countries satisfied the search criteria</h5>
     </header>
 
     <div class="countries-filters">
         <input type="text" id="search" placeholder="Search countries by city or languages">
         <div class="buttons">
-            <button id="btnName">Name</button>
-            <button id="btnCapital">capital</button>
-            <button id="btnPopulation">population</button>
+            <button id="btnName">
+                name <span class="material-symbols-outlined">keyboard_arrow_down</span>
+            </button>
+            <button id="btnCapital">capital <span class="material-symbols-outlined">keyboard_arrow_down</span></button>
+            <button id="btnPopulation">population <span class="material-symbols-outlined">keyboard_arrow_down</span></button>
             <span class="material-symbols-outlined" id="btnStats">
                 query_stats
             </span>
@@ -28,17 +30,7 @@
     </div>
     
     <div class="container">
-        <div class="countries-wrapper">
-            <!-- <div class="box">
-                <img src="" alt="flag" id="flag">
-                <h3 id="country-name">botswana</h3>
-                <div class="info">
-                    <p id="capital">capital: <span></span></p>
-                    <p id="languages">languages: <span></span></p>
-                    <p id="population">population: <span></span></p>
-                </div>
-            </div> -->
-        </div>
+        <div class="countries-wrapper"></div>
     </div>
 
     <script src="./script.js"></script>

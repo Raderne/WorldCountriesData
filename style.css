@@ -55,7 +55,7 @@ header h5 {
   font-style: italic;
   display: none;
 }
-header.active h5 {
+h5.active {
   display: block;
 }
 
@@ -98,13 +98,19 @@ header.active h5 {
   color: #fff;
   width: 100px;
   height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   padding: 0.6rem 1.1rem;
   border-radius: 20px;
   margin-right: 1rem;
   cursor: pointer;
   transition: 0.3s ease;
 }
-.countries-filters span {
+.countries-filters button span {
+  display: none;
+}
+.countries-filters #btnStats {
   background: transparent;
   color: var(--title-color);
   border: 2px solid var(--title-color);
@@ -122,7 +128,7 @@ header.active h5 {
   color: var(--title-color);
   border: 1px solid var(--title-color);
 }
-.countries-filters span:hover {
+.countries-filters #btnStats:hover {
   background-color: var(--primary-color);
   color: #fff;
   border: none;
@@ -136,7 +142,8 @@ header.active h5 {
 .countries-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .countries-wrapper .box {
