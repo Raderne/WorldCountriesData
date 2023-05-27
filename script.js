@@ -48,10 +48,10 @@ function getCountriesData(countriesApi, search) {
           (country.capital != null && country.capital.match(search)) ||
           language.match(search)
         ) {
+          showCountries(country);
+
           numOfCriteria.parentElement.classList.add("active");
           numOfCriteria.innerText = countriesWrapper.children.length + 1;
-
-          showCountries(country);
         } else if (search === null) {
           numOfCriteria.parentElement.classList.remove("active");
           showCountries(country);
