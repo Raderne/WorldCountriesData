@@ -1,6 +1,7 @@
 const countriesWrapper = document.querySelector(".countries-wrapper");
 const searchInput = document.getElementById("search");
 const numOfCriteria = document.getElementById("numOfCriteria");
+const orderButtons = document.querySelectorAll(".order-btns button");
 
 const countriesAPI =
   "https://restcountries.com/v2/all?fields=name,flags,capital,languages,population";
@@ -49,14 +50,16 @@ function getCountriesData(countriesApi, search) {
           language.match(search)
         ) {
           showCountries(country);
-
           numOfCriteria.parentElement.classList.add("active");
-          numOfCriteria.innerText = countriesWrapper.children.length + 1;
         } else if (search === null) {
           numOfCriteria.parentElement.classList.remove("active");
           showCountries(country);
         }
       });
+      numOfCriteria.textContent = countriesWrapper.childElementCount;
+    })
+    .catch((err) => {
+      countriesWrapper.innerHTML = "Can't connect to the data";
     });
 }
 
@@ -71,4 +74,24 @@ searchInput.addEventListener("input", (e) => {
   } else {
     window.location.reload();
   }
+});
+
+function removeArrows() {
+  orderButtons.forEach((btn) => {
+    btn.classList.remove("showArrow");
+  });
+}
+
+let rotate = 0;
+orderButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    removeArrows();
+
+    const arrow = btn.querySelector("span");
+    btn.classList.add("showArrow");
+    if (btn.classList.contains("showArrow")) {
+      arrow.style.transform = `rotate(${rotate}deg)`;
+      rotate += 180;
+    }
+  });
 });

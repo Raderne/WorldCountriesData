@@ -69,7 +69,7 @@ h5.active {
   margin: 1rem 0 2rem;
 }
 .countries-filters #search {
-  width: 60%;
+  width: min(30rem, 60%);
   height: 30px;
   border: none;
   outline: none;
@@ -91,6 +91,11 @@ h5.active {
   height: 40px;
 }
 
+.countries-filters .buttons .order-btns {
+  display: flex;
+  height: 40px;
+}
+
 .countries-filters button {
   border: 1px solid transparent;
   outline: none;
@@ -107,9 +112,17 @@ h5.active {
   cursor: pointer;
   transition: 0.3s ease;
 }
+.countries-filters button:active {
+  transform: scale(0.98);
+}
 .countries-filters button span {
   display: none;
 }
+.countries-filters button.showArrow span {
+  display: block;
+}
+
+
 .countries-filters #btnStats {
   background: transparent;
   color: var(--title-color);
