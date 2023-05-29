@@ -65,8 +65,6 @@ function getCountriesData(countriesApi, search) {
 }
 
 searchInput.addEventListener("input", (e) => {
-  e.preventDefault();
-
   userInput = e.target.value;
   let searchTarget = new RegExp(userInput, "gi");
 
