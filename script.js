@@ -10,6 +10,8 @@ let userInput = "";
 let userIsSearching = false,
   btnClicked = false;
 
+// Inject country card into Html
+
 function showCountries(country) {
   let language = "";
   if (!btnClicked) {
@@ -33,6 +35,8 @@ function showCountries(country) {
 
   countriesWrapper.appendChild(box);
 }
+
+// Get Countries data from API
 
 getCountriesData(countriesAPI, searchInput.value);
 
@@ -64,6 +68,7 @@ function getCountriesData(countriesApi, search) {
     });
 }
 
+// search countries
 searchInput.addEventListener("input", (e) => {
   userInput = e.target.value;
   let searchTarget = new RegExp(userInput, "gi");
@@ -77,6 +82,7 @@ searchInput.addEventListener("input", (e) => {
   }
 });
 
+// rearrange order according to filter buttons
 function removeArrows() {
   orderButtons.forEach((btn) => {
     btn.classList.remove("showArrow");
@@ -153,3 +159,82 @@ orderButtons.forEach((btn) => {
     }
   });
 });
+
+// Countries chart using ChartJs
+const ctx = document.getElementById("myChart");
+let chart;
+
+function getCountriesChartInfo(context) {
+  const countryInfo = getChartData();
+
+  const labels = countryInfo.map((country) => country.name);
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        axis: "y",
+        data: [...countryInfo.map((country) => country.population)],
+        fill: false,
+        backgroundColor: "#eb7b62",
+      },
+    ],
+  };
+
+  const config = {
+    type: "bar",
+    data,
+    options: {
+      indexAxis: "y",
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+    },
+  };
+
+  chart = new Chart(context, config);
+}
+setTimeout(() => {
+  getCountriesChartInfo(ctx);
+}, 1000);
+
+function getChartData() {
+  const boxes = countriesWrapper.querySelectorAll(".box");
+
+  let countryInfo = [];
+
+  boxes.forEach((box) => {
+    let country = {
+      name: box.querySelector(".name").innerText,
+      languages: box.querySelector(".languages").innerText,
+      population: box.querySelector(".population").innerText,
+    };
+    countryInfo.push(country);
+  });
+
+  countryInfo.sort((a, b) => b["population"] - a["population"]);
+
+  let worldPopulation = countryInfo
+    .map((num) => num.population)
+    .reduce((total, num) => {
+      return total + parseFloat(num);
+    }, 0);
+
+  let chartData = [
+    {
+      name: "World",
+      languages: "",
+      population: worldPopulation,
+    },
+  ];
+
+  for (let i = 0; i < 9; i++) {
+    if (countryInfo[i] == null) return;
+    chartData.push(countryInfo[i]);
+  }
+
+  console.log("chart :", chartData);
+
+  return chartData;
+}

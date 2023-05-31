@@ -25,9 +25,11 @@
                 <button id="capital">capital <span class="material-symbols-outlined">keyboard_arrow_down</span></button>
                 <button id="population">population <span class="material-symbols-outlined">keyboard_arrow_down</span></button>
             </div>
-            <span class="material-symbols-outlined" id="btnStats">
-                query_stats
-            </span>
+            <a href="#chartSection">
+                <span class="material-symbols-outlined" id="btnStats">
+                    query_stats
+                </span>
+            </a>
         </div>
     </div>
     
@@ -35,6 +37,13 @@
         <div class="countries-wrapper"></div>
     </div>
 
+    <div class="chart-container" id="chartSection">
+        <h3>10 Most Populated Countries in the World</h3>
+
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>
