@@ -168,13 +168,15 @@ function getCountriesChartInfo(context) {
   const countryInfo = getChartData();
 
   const labels = countryInfo.map((country) => country.name);
+  const populationName = countryInfo.map((country) => country.population);
   const data = {
     labels: labels,
     datasets: [
       {
         axis: "y",
+        // barThickness: 16,
         data: [...countryInfo.map((country) => country.population)],
-        fill: false,
+        fill: true,
         backgroundColor: "#eb7b62",
       },
     ],
@@ -185,6 +187,14 @@ function getCountriesChartInfo(context) {
     data,
     options: {
       indexAxis: "y",
+      scales: {
+        x: {
+          stacked: true,
+        },
+        y: {
+          stacked: true,
+        },
+      },
       plugins: {
         legend: {
           display: false,
